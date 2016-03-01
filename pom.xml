@@ -18,8 +18,6 @@
           <module>todosapp-sharedresources</module>
           <module>todosapp-javaee</module>
           <module>todosapp-spring</module>
-          <module>todosapp-vertx</module>
-          <module>todosapp-play</module>
     </modules>  
 
     <properties>
