@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todosapp-javaee/todosapp-javaee.iml" filepath="$PROJECT_DIR$/todosapp-javaee/todosapp-javaee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todosapp-sharedresources/todosapp-sharedresources.iml" filepath="$PROJECT_DIR$/todosapp-sharedresources/todosapp-sharedresources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todosapp-spring/todosapp-spring.iml" filepath="$PROJECT_DIR$/todosapp-spring/todosapp-spring.iml" />
+    </modules>
+  </component>
+</project>

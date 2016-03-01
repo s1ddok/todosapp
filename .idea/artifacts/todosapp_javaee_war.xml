@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="todosapp-javaee:war">
+    <output-path>$PROJECT_DIR$/todosapp-javaee/target</output-path>
+    <root id="archive" name="todosapp-javaee-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="todosapp-javaee:war exploded" />
+    </root>
+  </artifact>
+</component>
