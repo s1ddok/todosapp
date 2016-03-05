@@ -8,8 +8,6 @@ import sample.todosapp.spring.domain.Todo;
 /**
  * The repository for to-do items, providing standard CRUD operations as well
  * as a custom query method.
- * 
- * @author relai
  */
 public interface TodoRepository extends CrudRepository<Todo,Long>{
 	

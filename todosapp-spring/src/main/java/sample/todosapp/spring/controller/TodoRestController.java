@@ -24,7 +24,6 @@ import sample.todosapp.error.ErrorMessages.Message;
  * To-do REST web service. The CRUD operations are executed asynchronously using
  * Spring MVC.
  *
- * @author Re Lai
  */
 @RestController
 @RequestMapping("/api/todos")
@@ -56,6 +55,7 @@ public class TodoRestController {
     }
 
     @RequestMapping(value = "/{id}", method = PUT)
+    @ResponseStatus(value=HttpStatus.OK)
     public Callable<Todo> put(@RequestBody Todo todo) {
         return () -> todoRepository.save(todo);
     }
