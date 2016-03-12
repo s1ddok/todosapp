@@ -14,8 +14,6 @@ import javax.validation.constraints.Size;
 
 /** 
  * The entity class for to-do items.
- *
- * @author relai
  */
 @Entity
 @Table(name = "TODOS")

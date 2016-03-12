@@ -12,9 +12,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 @EnableSpringDataWebSupport
 
 /**
- * Spring boot application class. 
- * 
- * @author relai
+ * Spring boot application class.
  */
 public class Application {
 

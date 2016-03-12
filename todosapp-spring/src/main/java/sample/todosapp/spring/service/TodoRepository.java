@@ -3,6 +3,7 @@ package sample.todosapp.spring.service;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import sample.todosapp.spring.domain.Todo;
+import sample.todosapp.spring.domain.User;
 
 
 /**
@@ -19,4 +20,6 @@ public interface TodoRepository extends CrudRepository<Todo,Long>{
      * @return a list of to-do items
      */
 	List<Todo> findByCompleted(boolean completed);
+
+    List<Todo> findByUser(User user);
 }

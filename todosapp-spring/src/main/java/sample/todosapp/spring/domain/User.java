@@ -1,21 +1,19 @@
 package sample.todosapp.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Fetch;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="APP_USER")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,11 +28,16 @@ public class User {
 	@Column(name="STATE", nullable=false)
 	private String state=State.ACTIVE.getState();
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "APP_USER_USER_PROFILE", 
-             joinColumns = { @JoinColumn(name = "USER_ID") }, 
+             joinColumns = { @JoinColumn(name = "USER_ID") },
              inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+	@OneToMany(mappedBy = "user")
+	@Fetch(FetchMode.JOIN)
+	@JsonIgnore
+	private Set<Todo> todos = new HashSet<Todo>();
 
 	public int getId() {
 		return id;
@@ -75,6 +78,10 @@ public class User {
 	public void setUserProfiles(Set<UserProfile> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
+
+	public Set<Todo> getTodos() {return todos;}
+
+	public void setTodos(Set<Todo> todo) {this.todos = todo;}
 
 	@Override
 	public int hashCode() {

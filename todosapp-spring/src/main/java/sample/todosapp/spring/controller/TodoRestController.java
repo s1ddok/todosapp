@@ -1,10 +1,16 @@
 package sample.todosapp.spring.controller;
 
 import java.util.concurrent.Callable;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,10 +21,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import sample.todosapp.spring.dao.UserDao;
+import sample.todosapp.spring.dao.UserDaoImpl;
 import sample.todosapp.spring.domain.Todo;
+import sample.todosapp.spring.domain.User;
 import sample.todosapp.spring.service.TodoRepository;
 import sample.todosapp.error.ErrorMessages;
 import sample.todosapp.error.ErrorMessages.Message;
+import sample.todosapp.spring.service.UserService;
 
 /**
  * To-do REST web service. The CRUD operations are executed asynchronously using
@@ -31,15 +41,22 @@ public class TodoRestController {
 
     /** The application service for CRUD operations on Todo entities */
     @Autowired TodoRepository todoRepository;
+    @Autowired UserService userService;
 
     @RequestMapping(method = GET)
     public Callable<Iterable<Todo>> getAll() {
-        return () -> todoRepository.findAll();
+        User u = userService.findBySso(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        return () -> todoRepository.findByUser(u);
+        //return () -> todoRepository.findAll();
     }
 
     @RequestMapping(method = POST)
     @ResponseStatus(HttpStatus.CREATED)
     public Callable<Todo> post(@RequestBody Todo todo) {
+        User u = userService.findBySso(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        todo.setUser(u);
         return () -> todoRepository.save(todo);
     }
 
