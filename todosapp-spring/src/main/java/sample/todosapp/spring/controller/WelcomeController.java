@@ -30,11 +30,12 @@ public class WelcomeController {
 		forward("/webjars/todosapp/backbone-spa/spa.html", request, response);
 	}*/
 
-    /*@RequestMapping(method=GET, value="/login")
+    @RequestMapping(method=GET, value="/login")
     public void login(HttpServletRequest request,
                                        HttpServletResponse response) throws ServletException, IOException  {
+        
         forward("/webjars/todosapp/backbone-spa/login.html", request, response);
-    }*/
+    }
     
     private void forward(String file, HttpServletRequest request, 
         HttpServletResponse response) 

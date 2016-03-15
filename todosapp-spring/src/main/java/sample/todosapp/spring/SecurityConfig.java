@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/home", "/api/todos").authenticated()
                 //.antMatchers("/spa/**").access("hasRole('ADMIN')")
-                .and().formLogin()//.loginPage("/login")
-                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+                .and().formLogin().loginPage("/login")
+                //.and().exceptionHandling().accessDeniedPage("/Access_Denied")
+                .and().httpBasic();
     }
 }

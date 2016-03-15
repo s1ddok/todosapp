@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>Login Form</title>
-        <link rel="stylesheet" href="/webjars/todosapp/backbone-spa/css/style.css">
-  </head>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="/webjars/todosapp/backbone-spa/css/style.css">
+</head>
 
-  <body>
+<body>
 
-    <body>
-	<div class="login">
-		<div class="login-screen">
-			<div class="app-title">
-				<h1>TODOs App</h1>
-			</div>
+<body>
+<div class="login">
+	<div class="login-screen">
+		<div class="app-title">
+			<h1>TODOs App</h1>
+		</div>
 
+		<form name="f" th:action="@{/login}" method="post">
 			<div class="login-form">
 				<div class="control-group">
-				<input type="text" class="login-field" value="" placeholder="username" name="username" id="login-name">
-				<label class="login-field-icon fui-user" for="login-name"></label>
+					<input type="text" class="login-field" value="" placeholder="username" name="username" id="login-name">
+					<label class="login-field-icon fui-user" for="login-name"></label>
 				</div>
 
 				<div class="control-group">
-				<input type="password" class="login-field" value="" placeholder="password" name="password" id="login-pass">
-				<label class="login-field-icon fui-lock" for="login-pass"></label>
+					<input type="password" class="login-field" value="" placeholder="password" name="password" id="login-pass">
+					<label class="login-field-icon fui-lock" for="login-pass"></label>
 				</div>
 
 				<button type="submit" class="btn btn-primary btn-large btn-block">login</button>
 			</div>
-		</div>
+		</form>
 	</div>
+</div>
 </body>
 
-  </body>
+</body>
 </html>
