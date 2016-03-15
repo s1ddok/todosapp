@@ -33,7 +33,6 @@ import sample.todosapp.spring.service.UserService;
 /**
  * To-do REST web service. The CRUD operations are executed asynchronously using
  * Spring MVC.
- *
  */
 @RestController
 @RequestMapping("/api/todos")
@@ -48,7 +47,6 @@ public class TodoRestController {
         User u = userService.findBySso(SecurityContextHolder.getContext().getAuthentication().getName());
 
         return () -> todoRepository.findByUser(u);
-        //return () -> todoRepository.findAll();
     }
 
     @RequestMapping(method = POST)
