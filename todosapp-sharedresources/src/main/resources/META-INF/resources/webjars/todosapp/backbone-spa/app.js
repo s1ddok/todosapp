@@ -3,6 +3,7 @@ var todosapp = todosapp || {};
 $(function() {	
 	
 	todosapp.templates = {};
+    todosapp.authentificated = false;
     todosapp.fetched = false;
     todosapp.collection =  new todosapp.model.TodoCollection();   
     todosapp.router = new todosapp.TodoRouter();
