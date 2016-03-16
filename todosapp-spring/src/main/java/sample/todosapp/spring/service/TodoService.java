@@ -10,7 +10,7 @@ import sample.todosapp.spring.domain.User;
  * The repository for to-do items, providing standard CRUD operations as well
  * as a custom query method.
  */
-public interface TodoRepository extends CrudRepository<Todo,Long>{
+public interface TodoService extends CrudRepository<Todo,Long>{
 	
     /**
      * Finds the to-do items based on its completion status. This is a 
