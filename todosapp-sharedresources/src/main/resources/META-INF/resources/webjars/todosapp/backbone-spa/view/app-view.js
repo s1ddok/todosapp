@@ -1,7 +1,6 @@
 var todosapp = todosapp || {};
 todosapp.view = todosapp.view || {};
 
-
 todosapp.view.AppView = Backbone.View.extend({
 	el: "body",
 	subview: null,

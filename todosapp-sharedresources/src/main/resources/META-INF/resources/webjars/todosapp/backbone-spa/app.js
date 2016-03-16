@@ -1,5 +1,9 @@
 var todosapp = todosapp || {};
 
+todosapp.model.User = Backbone.Model.extend({
+    url: '/api/users/self'
+});
+
 $(function() {	
 	
 	todosapp.templates = {};
@@ -14,4 +18,14 @@ $(function() {
     
     todosapp.collection.fetch();
     Backbone.history.start();
+
+    var currentUser = (new todosapp.model.User()).fetch({
+        success: function(response) {
+            var data = response.toJSON();
+            console.log(data);
+            $("#username").text(data.name);
+        }
+    })
+
+
 });
